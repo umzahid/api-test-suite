@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="REST API Test Suite" verbose="2" parallel="classes" thread-count="2">
+
+    <test name="User API Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="regression"/>
+                <include name="performance"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.umair.api.tests.UserApiTest"/>
+        </classes>
+    </test>
+
+    <test name="Auth API Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.umair.api.tests.AuthApiTest"/>
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,46 @@
+name: API Test Suite CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  api-tests:
+    name: REST API Tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        group: [ smoke, regression ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
+      - name: Run ${{ matrix.group }} API tests
+        run: mvn clean test -Dgroups="${{ matrix.group }}"
+
+      - name: Upload test reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: api-report-${{ matrix.group }}-${{ github.run_number }}
+          path: |
+            target/surefire-reports/
+            reports/api-logs.txt
+          retention-days: 14
