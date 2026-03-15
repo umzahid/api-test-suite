@@ -32,7 +32,6 @@ public class ApiConfig {
         try {
             PrintStream logStream = new PrintStream(new FileOutputStream(LOG_DIR, true));
             requestSpec = new RequestSpecBuilder()
-                    .setBaseUri(BASE_URL)
                     .setContentType(ContentType.JSON)
                     .setAccept(ContentType.JSON)
                     .addFilter(new RequestLoggingFilter(logStream))
@@ -41,7 +40,6 @@ public class ApiConfig {
         } catch (Exception e) {
             // fallback without file logging
             requestSpec = new RequestSpecBuilder()
-                    .setBaseUri(BASE_URL)
                     .setContentType(ContentType.JSON)
                     .setAccept(ContentType.JSON)
                     .build();

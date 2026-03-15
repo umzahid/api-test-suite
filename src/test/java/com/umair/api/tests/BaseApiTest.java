@@ -13,12 +13,17 @@ import java.nio.file.Paths;
  */
 public abstract class BaseApiTest {
 
-    protected RequestSpecification spec;
+    protected static RequestSpecification spec;
 
-    @BeforeSuite
-    public void suiteSetup() throws Exception {
-        Files.createDirectories(Paths.get("reports"));
-        ApiConfig.init();
-        spec = ApiConfig.getRequestSpec();
+    static {
+        try {
+            System.out.println("BaseApiTest static initializer called");
+            Files.createDirectories(Paths.get("reports"));
+            ApiConfig.init();
+            spec = ApiConfig.getRequestSpec();
+            System.out.println("spec initialized: " + (spec != null));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

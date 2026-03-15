@@ -85,7 +85,7 @@ public class UserApiTest extends BaseApiTest {
     @Test(description = "POST /users creates a user and returns 201",
           groups = {"smoke", "post"})
     public void testCreateUser() {
-        User newUser = new User("Umair", "Zahid", "aumair525@gmail.com");
+        User newUser = new User("Umair", "Zahid", "testemail.com");
 
         Response response =
             given()
