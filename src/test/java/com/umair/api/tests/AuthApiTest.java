@@ -2,7 +2,6 @@ package com.umair.api.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeSuite;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -11,11 +10,6 @@ import static org.hamcrest.Matchers.*;
  * Authentication endpoint tests — POST /login, POST /register.
  */
 public class AuthApiTest extends BaseApiTest {
-
-    @BeforeSuite
-    public void setup() throws Exception {
-        BaseApiTest.suiteSetup();
-    }
 
     // ── LOGIN ─────────────────────────────────────────────────────────────────
 
