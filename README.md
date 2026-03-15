@@ -103,4 +103,4 @@ api-test-suite/
 ## 👨‍💻 Author
 
 **Umair Zahid** — SDET  
-📧 aumair525@gmail.com | 🔗 [LinkedIn](https://linkedin.com/in/umair-zahid)
+📧 aumair525@gmail.com | 🔗 [LinkedIn]([https://linkedin.com/in/umair-zahid](https://www.linkedin.com/in/umairzahid2000/))
